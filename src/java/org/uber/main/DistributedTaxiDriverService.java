@@ -29,36 +29,17 @@ class DistributedTaxiDriverService {
         currentTimeSlot = -1.0 * Constants.INF;
     }
 
-    public String getDestination(String driverPosition, Double driverRequestTime) {
+    public String getDestination(String driverPosition, ArrayList<Cluster> clusters) {
                 
         Driver driver = new Driver();
        
         driver = dataProcessor.processInput(driverPosition);
+       // System.out.print("Driver Position: 123" +driver.getLatitude());
         
-        System.out.println("Currently Processing Client: " 
-                + driver.getLatitude() + "," 
-                + driver.getLongitude() + "," 
-                + driver.getTime());
+       // System.out.print("Cluster Position: 123" +clusters);
         
-        driver.setTime(driverRequestTime);
-        
-        if ((driver.getTime() - Constants.REAPPLY_DURATION) > currentTimeSlot) {    
-         
-            currentTimeSlot = driver.getTime();
-            System.out.println("\nRe-applying K-means....\n");
-            System.out.println("New time slot: " + currentTimeSlot);
-            currentTimeSlot = driver.getTime();
-            clusters = kMeansProcessor.getClusters(currentTimeSlot);
-            dataProcessor.updateClusters(clusters);
-          
-        } else {
-            System.out.println("\nUsing previous Clusters....");
-        }
-        Integer bestClusterId = dataProcessor.getBestCluster(clusters, driver);
-        
-        // Increment number of drivers in cluster
-        clusters.get(bestClusterId).setDrivers(clusters.get(bestClusterId).getDrivers() + 1);
-        
-        return dataProcessor.convertClusterToString(clusters.get(bestClusterId));
+        Integer bestId = dataProcessor.getBestCluster(clusters, driver);
+        System.out.println("ID12346:" + bestId);
+        return dataProcessor.convertClusterToString(clusters.get(bestId));
     }    
 }

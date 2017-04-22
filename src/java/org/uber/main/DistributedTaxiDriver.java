@@ -5,6 +5,8 @@
  */
 package org.uber.main;
 
+import distributedtaxidriver.POJO.Cluster;
+import java.util.ArrayList;
 import javax.jws.WebService;
 
 /**
@@ -16,8 +18,12 @@ public class DistributedTaxiDriver {
 
     private DistributedTaxiDriverService service  = new DistributedTaxiDriverService();
     
-    public String getDestinationCoordinates(String driverPosition, Double driverRequestTime) {
+    /*public String getDestinationCoordinates(String driverPosition, Double driverRequestTime) {
         return service.getDestination(driverPosition,driverRequestTime);
-    }
+    }*/
+    
+    public String getDestinationCoordinates(String driverPosition, ArrayList<Cluster> clusters) {
+        return service.getDestination(driverPosition, clusters);
+    } 
     
 }

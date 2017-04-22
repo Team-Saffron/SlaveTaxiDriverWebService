@@ -48,11 +48,12 @@ public class DataProcessor {
         Integer numberOfClusters = clusters.size();
         Integer resultId = 0;
         Double maxHypothesisValue = -1.0 * Constants.INF;
-        
+        System.out.println("\n1408Starting Google Maps calls");
        // outputManager.write("\nStarting Google Maps calls", Color.green);
         for (int i = 0; i < numberOfClusters; i++) {
             Double hypothesis = getHypothesisValue(clusters.get(i), driver);
-         //   outputManager.write(".........." + (numberOfClusters - i) + " Remaining", Color.green);
+            System.out.println("1408.........." + (numberOfClusters - i) + " Remaining");
+//   outputManager.write(".........." + (numberOfClusters - i) + " Remaining", Color.green);
             if (hypothesis > maxHypothesisValue) {
                 maxHypothesisValue = hypothesis;
                 resultId = i;
