@@ -34,12 +34,12 @@ class DistributedTaxiDriverService {
         Driver driver = new Driver();
        
         driver = dataProcessor.processInput(driverPosition);
-       // System.out.print("Driver Position: 123" +driver.getLatitude());
+        System.err.print("Driver Position: 123" +driver.getLatitude());
         
-       // System.out.print("Cluster Position: 123" +clusters);
+        System.err.print("Cluster Position: 123" +clusters);
         
         Integer bestId = dataProcessor.getBestCluster(clusters, driver);
-        System.out.println("ID12346:" + bestId);
+        System.err.println("ID12346:" + bestId);
         return bestId;
     }    
 }
