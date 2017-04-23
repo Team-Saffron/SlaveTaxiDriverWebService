@@ -22,7 +22,7 @@ public class DistributedTaxiDriver {
         return service.getDestination(driverPosition,driverRequestTime);
     }*/
     
-    public String getDestinationCoordinates(String driverPosition, ArrayList<Cluster> clusters) {
+    public Integer getDestinationCoordinates(String driverPosition, ArrayList<Cluster> clusters) {
         return service.getDestination(driverPosition, clusters);
     } 
     

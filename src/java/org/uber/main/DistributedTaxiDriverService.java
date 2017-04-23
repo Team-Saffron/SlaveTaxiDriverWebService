@@ -29,7 +29,7 @@ class DistributedTaxiDriverService {
         currentTimeSlot = -1.0 * Constants.INF;
     }
 
-    public String getDestination(String driverPosition, ArrayList<Cluster> clusters) {
+    public Integer getDestination(String driverPosition, ArrayList<Cluster> clusters) {
                 
         Driver driver = new Driver();
        
@@ -40,6 +40,6 @@ class DistributedTaxiDriverService {
         
         Integer bestId = dataProcessor.getBestCluster(clusters, driver);
         System.out.println("ID12346:" + bestId);
-        return dataProcessor.convertClusterToString(clusters.get(bestId));
+        return bestId;
     }    
 }
