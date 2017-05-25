@@ -8,7 +8,6 @@ package distributedtaxidriver.KMeansHandlers;
 import distributedtaxidriver.KMeansHandlers.KMeans;
 import distributedtaxidriver.Constants.Constants;
 import distributedtaxidriver.DataProcessor;
-import distributedtaxidriver.OutputHandlers.ServerOutputManager;
 import distributedtaxidriver.POJO.Cluster;
 import distributedtaxidriver.POJO.DataPoint;
 import java.awt.Color;

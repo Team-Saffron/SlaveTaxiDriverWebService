@@ -8,7 +8,7 @@ package distributedtaxidriver;
 import distributedtaxidriver.MapsHandlers.MapNode;
 import distributedtaxidriver.MapsHandlers.MapEngine;
 import distributedtaxidriver.Constants.Constants;
-import distributedtaxidriver.OutputHandlers.ServerOutputManager;
+import distributedtaxidriver.OutputHandlers.Logger;
 import distributedtaxidriver.POJO.Cluster;
 import distributedtaxidriver.POJO.DataPoint;
 import distributedtaxidriver.POJO.Driver;
@@ -48,18 +48,16 @@ public class DataProcessor {
         Integer numberOfClusters = clusters.size();
         Integer resultId = 0;
         Double maxHypothesisValue = -1.0 * Constants.INF;
-        System.out.println("\n1408Starting Google Maps calls");
-       // outputManager.write("\nStarting Google Maps calls", Color.green);
+        Logger.write("Starting Google Maps calls");
         for (int i = 0; i < numberOfClusters; i++) {
             Double hypothesis = getHypothesisValue(clusters.get(i), driver);
-            System.out.println("1408.........." + (numberOfClusters - i) + " Remaining");
-//   outputManager.write(".........." + (numberOfClusters - i) + " Remaining", Color.green);
+            Logger.write(".........." + (numberOfClusters - i) + " Remaining");
+
             if (hypothesis > maxHypothesisValue) {
                 maxHypothesisValue = hypothesis;
                 resultId = i;
             }
         }
-        //outputManager.write("\nCompleted Google Maps calls", Color.green);
         return resultId;
     }
     

@@ -8,6 +8,7 @@ package org.uber.main;
 import distributedtaxidriver.Constants.Constants;
 import distributedtaxidriver.DataProcessor;
 import distributedtaxidriver.KMeansHandlers.KMeansProcessor;
+import distributedtaxidriver.OutputHandlers.Logger;
 import distributedtaxidriver.POJO.Cluster;
 import distributedtaxidriver.POJO.Driver;
 import java.util.ArrayList;
@@ -34,12 +35,11 @@ class DistributedTaxiDriverService {
         Driver driver = new Driver();
        
         driver = dataProcessor.processInput(driverPosition);
-        System.err.print("Driver Position: 123" +driver.getLatitude());
-        
-        System.err.print("Cluster Position: 123" +clusters);
+  
+        Logger.write("Cluster Position:\n" + clusters + "\n");
         
         Integer bestId = dataProcessor.getBestCluster(clusters, driver);
-        System.err.println("ID12346:" + bestId);
+        System.err.println("Result" + bestId + "\n");
         return bestId;
     }    
 }
